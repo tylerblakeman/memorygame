@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+
+//importing the component that has the individual items.
 import DisplayComponents from './Display_Components'
+
+//importing json with items that will be displayed
 import displayitems from '../display_items.json'
 
 
 class DisplayGrid extends Component {
   render() {
+    //re-arranging the array of displayed items
     function shuffle(array) {
       array.sort(() => Math.random() - 0.5);
     }
     shuffle(displayitems);
-    const showItems = displayitems.map((element) => {
-      console.log(element)
+    const showItems = displayitems.map((element, index) => {
       return(
       <DisplayComponents
+      key={index}
       id={element.id}
       image={element.image}
       name={element.name}
